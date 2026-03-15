@@ -1,56 +1,120 @@
-.mainav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    height: 8%;
-    box-sizing: border-box;
-    text-align: center;
-    color: white;
-    font-family: Arial, sans-serif;
-    max-width: 100%;
-    
-    opacity: 95%;
-}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    max-width: 100%;
-    margin: auto;
-    padding: 20px;
-    background-image: url(https://i.postimg.cc/CLtv2WTs/image.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-    
-
-
-h1 {
-    font-weight: bold;}
-
-
-.avtor {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: right;
-    margin-right: 10%;
+    font-family: Arial, sans-serif;
+    display: flex;       
+    min-height: 100vh;     
 }
 
-
-.info{
-    padding: 55px;
-    margin: auto;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(0, 0, 0);
-    background: white; 
-    max-width: 1100px; 
-    margin: 100px auto; 
-    padding: 40px; 
-    color: black;
-    border-radius: 6px;
-    
+.sidebar {
+    width: 250px;           
+    background-color: #353535;
+    color: white;
+    padding: 35px;
+    height: 100vh;          
+    position: sticky;        
+    top: 0;
+    overflow-y: auto;        
 }
 
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    border-bottom: 5px solid #353535;
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    background-color: #616161;
+    border-width: 2px;
+    border-color: rgb(68, 68, 68);
+    border-style: solid;
+}
+
+.sidebar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #474747;
+    border-radius: 0;
+}
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;              
+}
+
+
+.header {
+    background-color: rgb(236, 236, 236);
+    padding: 20px 30px;
+    box-shadow: 0px 1.5px 0.5px rgba(31, 31, 31, 0.1);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    margin-left: 5%;
+}
+.ph2 {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+.content h2 {
+    text-align: center;
+}
+
+.author {
+    color: #666;
+    margin-left: 8%;
+}
+
+.content {
+    padding: 50px;
+    background-color: #f3f3f3;
+    flex: 1;   
+    max-width: 100ch;        /* ch эт символов кол во*/
+    margin: auto;    
+    margin-top: 6px;    
+    box-shadow: 0 2px 0.8px;
+}
+
+.content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    text-indent: 1.25cm;
+    font-size: 20px;
+}
+.content ol {
+    font-size: 1.2rem;        /* размер текста (подбери под себя) */
+    padding-left: 40px;        /* отступ слева, чтобы цифры не прилипали к краю */
+    margin: 20px 0;            /* отступы сверху и снизу от списка */
+}
+
+.content ol li {
+    margin-bottom: 12px;       /* расстояние между пунктами */
+    line-height: 1.5;          /* межстрочный интервал */
+}
+.chapter {
+    margin-bottom: 40px;        /* отступ между главами */
+    padding: 20px;              /* внутренний отступ, если нужен */
+    background-color: #f9f9f9;  /* фон для блока (опционально) */
+    border-radius: 8px;         /* скругление */
+}
