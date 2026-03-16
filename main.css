@@ -103,18 +103,30 @@ body {
     font-size: 20px;
 }
 .content ol {
-    font-size: 1.2rem;        /* размер текста (подбери под себя) */
-    padding-left: 40px;        /* отступ слева, чтобы цифры не прилипали к краю */
-    margin: 20px 0;            /* отступы сверху и снизу от списка */
+    font-size: 1.2rem;        
+    padding-left: 40px;      
+    margin: 20px 0;           
 }
 
 .content ol li {
-    margin-bottom: 12px;       /* расстояние между пунктами */
-    line-height: 1.5;          /* межстрочный интервал */
+    margin-bottom: 12px;       
+    line-height: 1.5;          
 }
 .chapter {
-    margin-bottom: 40px;        /* отступ между главами */
-    padding: 20px;              /* внутренний отступ, если нужен */
-    background-color: #f9f9f9;  /* фон для блока (опционально) */
-    border-radius: 8px;         /* скругление */
+    margin-bottom: 40px;        
+    padding: 20px;              
+    background-color: #f9f9f9;  /
+    border-radius: 8px;         
+}
+span {
+text-indent: 1.25cm;
+font-size: 1.5rem;
+}
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
