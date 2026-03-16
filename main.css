@@ -19,7 +19,25 @@ body {
     height: 100vh;          
     position: sticky;        
     top: 0;
-    overflow-y: auto;        
+    overflow-y: auto; 
+           
+}
+@media (max-width: 768px) {
+    body, html {
+        height: 100%;
+    }
+
+    .sidebar {
+        min-height: 100%;  
+        
+        overflow-y: auto; /* если меню длинное — будет скролл */
+    }
+
+    #burger-toggle:checked ~ .sidebar {
+        transform: translateX(0);
+    }
+
+   
 }
 
 .sidebar h2 {
@@ -129,4 +147,151 @@ html {
   html {
     scroll-behavior: auto;
   }
+}
+/* Скрываем чекбокс */
+#burger-toggle {
+    display: none;
+}
+
+/* Кнопка-бургер (показывается только на мобилках) */
+.burger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1002;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.burger span,
+.burger::before,
+.burger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff; 
+    transition: 0.3s;
+}
+
+.burger::before {
+    top: 0;
+}
+
+.burger span {
+    top: 11px;
+}
+
+.burger::after {
+    bottom: 0;
+}
+
+/* Анимация при открытом чекбоксе */
+#burger-toggle:checked ~ .burger::before {
+    transform: rotate(45deg);
+    top: 11px;
+}
+
+#burger-toggle:checked ~ .burger::after {
+    transform: rotate(-45deg);
+    bottom: 11px;
+}
+
+#burger-toggle:checked ~ .burger span {
+    opacity: 0;
+}
+
+/* Скрываем чекбокс */
+#burger-toggle {
+    display: none;
+}
+
+/* Кнопка-бургер (показывается только на мобилках) */
+.burger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1002;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.burger span,
+.burger::before,
+.burger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #000000; 
+    transition: 0.3s;
+}
+
+.burger::before {
+    top: 0;
+}
+
+.burger span {
+    top: 11px;
+}
+
+.burger::after {
+    bottom: 0;
+}
+
+/* Анимация при открытом чекбоксе */
+#burger-toggle:checked ~ .burger::before {
+    transform: rotate(45deg);
+    top: 11px;
+}
+
+#burger-toggle:checked ~ .burger::after {
+    transform: rotate(-45deg);
+    bottom: 11px;
+}
+
+#burger-toggle:checked ~ .burger span {
+    opacity: 0;
+}
+
+/* Адаптация под мобилки */
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10000;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: 1001;
+    }
+
+    #burger-toggle:checked ~ .sidebar {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Уменьш отступы текста на телефоне */
+    .content {
+        padding: 15px !important;  
+        margin: 10px !important;
+        max-width: 100% !important;
+    }
 }
