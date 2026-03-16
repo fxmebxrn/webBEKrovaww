@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-// код нейронки
-=======
-// код от нейронки
->>>>>>> Stashed changes
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
