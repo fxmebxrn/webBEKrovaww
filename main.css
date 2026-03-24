@@ -1,297 +1,141 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Базовые стили */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;       
-    min-height: 100vh;     
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.sidebar {
-    width: 250px;           
-    background-color: #353535;
-    color: white;
-    padding: 35px;
-    height: 100vh;          
-    position: sticky;        
-    top: 0;
-    overflow-y: auto; 
-           
-}
-@media (max-width: 768px) {
-    body, html {
-        height: 100%;
-    }
-
-    .sidebar {
-        min-height: 100%;  
-        
-        overflow-y: auto; /* если меню длинное — будет скролл */
-    }
-
-    #burger-toggle:checked ~ .sidebar {
-        transform: translateX(0);
-    }
-
-   
-}
-
-.sidebar h2 {
-    margin-bottom: 30px;
-    font-size: 1.4rem;
-    border-bottom: 5px solid #353535;
-    padding-bottom: 10px;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar li {
-    margin-bottom: 10px;
-    background-color: #616161;
-    border-width: 2px;
-    border-color: rgb(68, 68, 68);
-    border-style: solid;
-}
-
-.sidebar a {
-    color: #ecf0f1;
-    text-decoration: none;
-    display: block;
-    padding: 12px;
-    border-radius: 4px;
-    transition: 0.2s;
-}
-
-.sidebar a:hover {
-    background-color: #474747;
-    border-radius: 0;
-}
-.main {
-    flex: 1;
+.hero {
+    height: 100vh;
     display: flex;
-    flex-direction: column;              
-}
-
-
-.header {
-    background-color: rgb(236, 236, 236);
-    padding: 20px 30px;
-    box-shadow: 0px 1.5px 0.5px rgba(31, 31, 31, 0.1);
-}
-
-.header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-    margin-left: 5%;
-}
-.ph2 {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-}
-.content h2 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
     text-align: center;
+    padding: 0 20px;
 }
 
-.author {
-    color: #666;
-    margin-left: 8%;
+.hero h1 { font-size: 4rem; margin: 0; }
+.hero p { font-size: 1.5rem; opacity: 0.8; }
+
+/* Контейнер таймлайна */
+.timeline-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    position: relative;
 }
 
-.content {
-    padding: 50px;
-    background-color: #f3f3f3;
-    flex: 1;   
-    max-width: 100ch;        /* ch эт символов кол во*/
-    margin: auto;    
-    margin-top: 6px;    
-    box-shadow: 0 2px 0.8px;
-}
-
-.content p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    text-indent: 1.25cm;
-    font-size: 20px;
-}
-.content ol {
-    font-size: 1.2rem;        
-    padding-left: 40px;      
-    margin: 20px 0;           
-}
-
-.content ol li {
-    margin-bottom: 12px;       
-    line-height: 1.5;          
-}
-.chapter {
-    margin-bottom: 40px;        
-    padding: 20px;              
-    background-color: #f9f9f9;  /
-    border-radius: 8px;         
-}
-span {
-text-indent: 1.25cm;
-font-size: 1.5rem;
-}
-html {
-  scroll-behavior: smooth;
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-/* Скрываем чекбокс */
-#burger-toggle {
-    display: none;
-}
-
-/* Кнопка-бургер (показывается только на мобилках) */
-.burger {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1002;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-}
-
-.burger span,
-.burger::before,
-.burger::after {
+/* Центральная линия */
+.timeline-container::before {
     content: '';
     position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 4px;
+    background: #2a5298;
+    transform: translateX(-50%);
+}
+
+/* Блок одного события */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 120px;
+    position: relative;
     width: 100%;
-    height: 3px;
-    background-color: #fff; 
-    transition: 0.3s;
 }
 
-.burger::before {
-    top: 0;
+/* Для четных блоков меняем текст и фото местами */
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
-.burger span {
-    top: 11px;
-}
-
-.burger::after {
-    bottom: 0;
-}
-
-/* Анимация при открытом чекбоксе */
-#burger-toggle:checked ~ .burger::before {
-    transform: rotate(45deg);
-    top: 11px;
-}
-
-#burger-toggle:checked ~ .burger::after {
-    transform: rotate(-45deg);
-    bottom: 11px;
-}
-
-#burger-toggle:checked ~ .burger span {
-    opacity: 0;
-}
-
-/* Скрываем чекбокс */
-#burger-toggle {
-    display: none;
-}
-
-/* Кнопка-бургер (показывается только на мобилках) */
-.burger {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1002;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-}
-
-.burger span,
-.burger::before,
-.burger::after {
-    content: '';
+/* Кружок по центру */
+.timeline-marker {
     position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid #2a5298;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Контейнеры для контента и фото */
+.timeline-content, .timeline-image {
+    width: 45%;
+}
+
+/* Выравнивание текста */
+.timeline-item:nth-child(odd) .timeline-content { text-align: right; }
+.timeline-item:nth-child(even) .timeline-content { text-align: left; }
+
+/* Белая плашка под текст */
+.content-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.year {
+    color: #2a5298;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+/* Заготовки под фото */
+.image-placeholder {
     width: 100%;
-    height: 3px;
-    background-color: #000000; 
-    transition: 0.3s;
+    height: 250px;
+    background-color: #d1d8e0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-.burger::before {
-    top: 0;
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    /* Меняем cover на contain */
+    object-fit: contain; 
+    /* Добавим белый фон, чтобы по бокам не было пустых серых зон, 
+       так как фотка с именами сама на белом фоне */
+    background-color: white; 
+    display: block;
 }
 
-.burger span {
-    top: 11px;
-}
-
-.burger::after {
-    bottom: 0;
-}
-
-/* Анимация при открытом чекбоксе */
-#burger-toggle:checked ~ .burger::before {
-    transform: rotate(45deg);
-    top: 11px;
-}
-
-#burger-toggle:checked ~ .burger::after {
-    transform: rotate(-45deg);
-    bottom: 11px;
-}
-
-#burger-toggle:checked ~ .burger span {
+/* АНИМАЦИЯ СКРОЛЛА */
+.hidden {
     opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
 }
-
-/* Адаптация под мобилки */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 @media (max-width: 768px) {
-    .burger {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 10000;
+    .timeline-item, .timeline-item:nth-child(even) {
+        flex-direction: column; /* Ставим текст и фото друг под друга */
+        text-align: center !important;
     }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100vh;
-        transform: translateX(-100%);
-        transition: transform 0.3s;
-        z-index: 1001;
-    }
-
-    #burger-toggle:checked ~ .sidebar {
-        transform: translateX(0);
-    }
-
-    .main {
-        margin-left: 0;
+    .timeline-content, .timeline-image {
         width: 100%;
     }
-
-    /* Уменьш отступы текста на телефоне */
-    .content {
-        padding: 15px !important;  
-        margin: 10px !important;
-        max-width: 100% !important;
+    .timeline-container::before, .timeline-marker {
+        display: none; /* Скрываем линию на мобилках для чистоты */
     }
 }
